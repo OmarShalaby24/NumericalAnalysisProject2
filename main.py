@@ -1,5 +1,6 @@
-def print_hi(name):
-    print(f'Hi, {name}')
+import eq_mat as matrix
 
-if __name__ == '__main__':
-    print_hi('PyCharm')
+numberOfVariables = 3
+eq = ["5x+3y+6z=5","6x+5y+1z=6","x+y+z=1"]
+Matrix = matrix.equationToMatrix(numberOfVariables,eq)
+print(Matrix)
