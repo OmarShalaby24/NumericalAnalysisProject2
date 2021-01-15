@@ -2,7 +2,7 @@ import numpy as np
 import sys
 import eq_mat as matrix
 from tkinter import *
-from GUI import *
+#from GUI import *
 
 
 def gauss_jordan(n, equations):
