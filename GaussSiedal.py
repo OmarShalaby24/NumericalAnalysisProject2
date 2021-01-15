@@ -1,6 +1,7 @@
 # as A matrix, Solution and B matrix
 from eq_mat import inputToMatrix
 import plot
+import copy
 
 equations="4x+1y+2z-4,3x+5y+1z-7,1x+1y+3z-3"
 def seidel(a, x):
@@ -44,13 +45,18 @@ def function(equations,numOfEq,numOfIterations,epsilon):
         l+=1
     print(list)
     index2 = 0
-
+    oldX=[]
+    flag=True
     # loop run for m times depending on m the error value
     # here we specify the number of iteration
     for i in range(0, numOfIterations):
         x = seidel(a, x)
         k = 0
+        relativeEr=[]
         for j in x:
+                if not flag:
+                     error=(x[k]-oldX[k])/x[k]
+                     relativeEr.append(error)
                 print(k)
                 #list[k][index2]=[]
                 list[k].append([i,j])
@@ -59,6 +65,10 @@ def function(equations,numOfEq,numOfIterations,epsilon):
 
         # print each time the updated solution
         print(x)
+        if not flag:
+            print(relativeEr)
+        oldX=copy.deepcopy(x)
+        flag=False
 
     #print(list)
     obj=plot.plot(list)
