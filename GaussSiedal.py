@@ -23,44 +23,45 @@ def seidel(a, x):
     # returning our updated solution
     return x
 
-
-# int(input())input as number of variable to be solved
-# n is the number of equations
-n = 3
-#a = []
-#b = []
-# initial solution depending on n(here n=3)
-x = [0, 0, 0]
-#a = [[4, 1, 2], [3, 5, 1], [1, 1, 3]]
-#b = [4, 7, 3]
-#print(x)
-a=inputToMatrix(3,equations)
-list=[None]*n
-print(list.__len__())
-listLength=list.__len__()
-l=0
-while l < n:
-    list[l]=[]
-    l+=1
-print(list)
-index2 = 0
-
-# loop run for m times depending on m the error value
-# here we specify the number of iteration
-for i in range(0, 5):
-    x = seidel(a, x)
-    k = 0
-    for j in x:
-            print(k)
-            #list[k][index2]=[]
-            list[k].append([i,j])
-            k += 1
-    index2 = index2 + 1
-
-    # print each time the updated solution
+def function(equations,numOfEq,numOfIterations,epsilon):
+    # int(input())input as number of variable to be solved
+    # n is the number of equations
+    n = numOfEq
+    #a = []
+    #b = []
+    # initial solution depending on n(here n=3)
+    x = [0, 0, 0]
+    #a = [[4, 1, 2], [3, 5, 1], [1, 1, 3]]
+    #b = [4, 7, 3]
     #print(x)
+    a=inputToMatrix(3,equations)
+    list=[None]*n
+    print(list.__len__())
+    listLength=list.__len__()
+    l=0
+    while l < n:
+        list[l]=[]
+        l+=1
+    print(list)
+    index2 = 0
 
-#print(list)
-obj=plot.plot(list)
-obj.draw2()
+    # loop run for m times depending on m the error value
+    # here we specify the number of iteration
+    for i in range(0, numOfIterations):
+        x = seidel(a, x)
+        k = 0
+        for j in x:
+                print(k)
+                #list[k][index2]=[]
+                list[k].append([i,j])
+                k += 1
+        index2 = index2 + 1
 
+        # print each time the updated solution
+        print(x)
+
+    #print(list)
+    obj=plot.plot(list)
+    obj.draw2()
+
+function(equations,3,5,0.01)
