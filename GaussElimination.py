@@ -1,9 +1,9 @@
 # Importing NumPy Library
 import numpy as np
 import sys
-from eq_mat import  inputToMatrix ,equationToMatrix
+from eq_mat import  inputToMatrix
 
-all_equations =["1x+1y-1z+3","6x+2y+2z-2","-3x+4y+1z-1"]
+all_equations ="1x+1y-1z+3,6x+2y+2z-2,-3x+4y+1z-1"
 
 
 ################code sha8al le guassian elimination#############
@@ -21,7 +21,7 @@ def GaussianElimination (numberOfMatrix,equations):
 
     # Reading augmented matrix coefficients
     print('Enter Augmented Matrix Coefficients:')
-    a=equationToMatrix(numberOfMatrix,equations)
+    a=inputToMatrix(numberOfMatrix,equations)
     # Applying Gauss Elimination
     for i in range(n):
         if a[i][i] == 0.0:
