@@ -18,23 +18,18 @@ def equationToMatrix(numberOfVariables, eq):
     return A
 
 
-def inputToMatrix(numberOfVariables, eqnuations):
-    # n = int(input('Enter number of unknowns: '))
+def inputToMatrix(numberOfVariables, equations):
     matrix = numpy.zeros((numberOfVariables, numberOfVariables + 1))
     eqnNum = 0
-    # out = numpy.zeros(n)
-    # input = input('Enter your equations separated by "," ')
-    equations = eqnuations.split(',')
+    equations = equations.split(',')
 
     count = 0
     for _ in equations:
         equations[count] = '+' + equations[count]
         count += 1
 
-    # print(equations)
     for i in equations:
-        eqnCoef = re.findall(r'[0-9\-\+]+', i)
-        # print(z)
+        eqnCoef = re.findall(r'[(\d+|\d+\.\d+)\-\+]+', i)
 
         coef = 0
         for j in eqnCoef:
@@ -44,10 +39,12 @@ def inputToMatrix(numberOfVariables, eqnuations):
                 eqnCoef[coef] = '1'
             elif j == '+-':
                 eqnCoef[coef] = '-1'
-            elif len(j) > 2 & j.find('+-'):
+            elif len(j) > 2 and j.startswith('+-'):
                 eqnCoef[coef] = j[1:]
-            matrix[eqnNum][coef] = int(eqnCoef[coef])
+            if coef == numberOfVariables:
+                matrix[eqnNum][coef] = float(eqnCoef[coef]) * -1.0
+            else:
+                matrix[eqnNum][coef] = float(eqnCoef[coef])
             coef += 1
-        # print(token)
         eqnNum += 1
     return matrix
