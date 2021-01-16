@@ -4,7 +4,7 @@ import plot
 import copy
 
 equations = "4x+1y+2z-4,3x+5y+1z-7,1x+1y+3z-3"
-
+x = [0, 0, 0]
 
 def seidel(a, x):
     # Finding length of a(3)
@@ -26,18 +26,19 @@ def seidel(a, x):
     return x
 
 
-def function(equations, numOfEq, numOfIterations, epsilon):
+def function(equations, numOfEq, numOfIterations, epsilon,initialValues):
     # int(input())input as number of variable to be solved
     # n is the number of equations
+    x=initialValues
     n = numOfEq
     output = list()
     # a = []
     # b = []
     # initial solution depending on n(here n=3)
-    x = [0, 0, 0]
     # a = [[4, 1, 2], [3, 5, 1], [1, 1, 3]]
     # b = [4, 7, 3]
     # print(x)
+    initialValues=[]
     a = inputToMatrix(3, equations)
     listA = [None] * n
     # print(listA.__len__())
@@ -71,11 +72,25 @@ def function(equations, numOfEq, numOfIterations, epsilon):
 
         # print each time the updated solution
         # print(x)
+
+
+
         if not flag:
             print(relativeEr)
             for k in range(len(x)):
                 output.append("%f\t" % relativeEr[k])
         oldX = copy.deepcopy(x)
+
+        relErFlag=True
+        if not flag:
+            for value in relativeEr:
+                if value > epsilon:
+                    print(value)
+                    relErFlag=False
+
+        if relErFlag and not flag:
+            print("gwa if ")
+            break
         flag = False
 
     # print(list)
@@ -84,4 +99,4 @@ def function(equations, numOfEq, numOfIterations, epsilon):
     obj.draw2()
 
 
-function(equations, 3, 5, 0.01)
+function(equations, 3, 5,0.1,x)
