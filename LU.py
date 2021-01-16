@@ -29,6 +29,7 @@ def lu_pivoting(n, equations):
 
 
 def LU(mat):
+    output = list()
     coefs = np.zeros(shape=(len(mat), len(mat)))
     values = np.zeros(shape=(len(mat), 1))
     for i in range(len(mat)):
@@ -43,7 +44,8 @@ def LU(mat):
         col += 1
         for i in range(col, len(coefs)):
             if coefs[k][k] == 0:
-                return 1
+                output.append("ERROR! Dividing by zero")
+                return output
             ratio = coefs[i][k] / coefs[k][k]
             L[i][col - 1] = ratio
             for j in range(len(coefs[i])):
@@ -53,7 +55,13 @@ def LU(mat):
     # print(L)
 
     D = np.linalg.inv(L).dot(values)
-    output = np.linalg.inv(coefs).dot(D)
+    result = np.linalg.inv(coefs).dot(D)
+    output.append("U:")
+    output.append(coefs)
+    output.append("L:")
+    output.append(L);
+    output.append("Results:")
+    output.append(result)
     return output
 
 
