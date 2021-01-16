@@ -98,6 +98,7 @@ def function(equations, numOfEq, numOfIterations, epsilon, initialValues):
     obj = plot.plot(listA)
     obj.draw2()
     print("llljyfhjdhmf")
+    output.append(output)
     # return output
     return output
 

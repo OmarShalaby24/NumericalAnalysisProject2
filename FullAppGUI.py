@@ -1,5 +1,7 @@
 from GaussianJordan import *
 from GaussElimination import *
+from GaussSiedal import *
+from LU import *
 from plot import *
 
 
@@ -8,12 +10,31 @@ def methods_win():
         unknownsNoField = unknownsEntry.get()
         equationField = equEntry.get()  # this will get the text from the text entry box
         output.delete(0.0, END)
-        output.insert(END, GaussianElimination(int(unknownsNoField), str(equationField)))
+        output.insert(END, GaussianElimination(int(unknownsNoField), equationField))
 
         unknownsNoField = unknownsEntry2.get()
         equationField = equEntry2.get()  # this will get the text from the text entry box
         output2.delete(0.0, END)
-        output2.insert(END, gauss_jordan(int(unknownsNoField), str(equationField)))
+        output2.insert(END, gauss_jordan(int(unknownsNoField), equationField))
+
+        unknownsNoField = unknownsEntry3.get()
+        equationField = equEntry3.get()  # this will get the text from the text entry box
+        output3.delete(0.0, END)
+        output3.insert(END, LU(inputToMatrix(int(unknownsNoField), equationField)))
+
+        unknownsNoField = unknownsEntry4.get()
+        equationField = equEntry4.get()  # this will get the text from the text entry box
+        iterationsField = iterationsEntry.get()
+        epsilonField = epsilonEntry.get()
+        initialValField = initalValEntry.get()
+        initPoints = initialValField
+        x = initPoints.split()
+        initPoints = []
+        for i in range(0, int(unknownsNoField)):
+            initPoints.append(float(x[i]))
+        output.delete(0.0, END)
+        output.insert(END, function(equationField, int(unknownsNoField), int(iterationsField), float(epsilonField),
+                                    initPoints))
 
     window = Tk()
     window.title("NUMERICAL METHODS")
@@ -88,20 +109,20 @@ def methods_win():
     iterations_label = Label(window, text="3.Enter number of iterations", bg="#B7C3D0", fg="black")
     iterations_label.place(x=695, y=415)
 
-    iterationsEntry = Entry(window, width=7, bg="white", borderwidth=3)
+    iterationsEntry = Entry(window, width=5, bg="white", borderwidth=3)
     iterationsEntry.place(x=850, y=415)
 
     epsilon_label = Label(window, text="4.Enter epsilon", bg="#B7C3D0", fg="black")
-    epsilon_label.place(x=910, y=415)
+    epsilon_label.place(x=895, y=415)
 
     epsilonEntry = Entry(window, width=15, bg="white", borderwidth=3)
-    epsilonEntry.place(x=980, y=415)
+    epsilonEntry.place(x=990, y=415)
 
     initalVal_label = Label(window, text="5.Enter initial values", bg="#B7C3D0", fg="black")
-    initalVal_label.place(x=1100, y=415)
+    initalVal_label.place(x=1090, y=415)
 
     initalValEntry = Entry(window, width=15, bg="white", borderwidth=3)
-    initalValEntry.place(x=1200, y=415)
+    initalValEntry.place(x=1190, y=415)
 
     solve_btn = Button(window, text="Solve", width=10, height=3, bg="#162252", fg="white", command=solve_all)
     solve_btn.place(x=605, y=575)

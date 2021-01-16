@@ -47,7 +47,7 @@ def gauss_jordan_win(noOfV=0, eqs=""):
         unknownsNoField = unknownsEntry.get()
         equationField = equEntry.get()  # this will get the text from the text entry box
         output.delete(0.0, END)
-        output.insert(END, gauss_jordan(int(unknownsNoField), str(equationField)))
+        output.insert(END, gauss_jordan(int(unknownsNoField), equationField))
 
     window = Tk()
     window.title("Gauss Jordan Method")

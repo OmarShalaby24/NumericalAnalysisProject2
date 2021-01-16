@@ -5,6 +5,8 @@ from eq_mat import *
 from tkinter import *
 
 
+# 3x+2y+2z+4,2x-5y+4z-6,6x-8y+7z-12
+
 def lu_pivoting(n, equations):
     matrix = inputToMatrix(n, equations)
     A = np.zeros(shape=(len(matrix), len(matrix)))
