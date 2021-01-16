@@ -2,8 +2,11 @@ import numpy as np
 import sys
 import eq_mat as matrix
 from tkinter import *
-#from GUI import *
 
+
+# from GUI import *
+
+# 2x+3y+1z+4,4x+1y+4z-9,3x+4y+6z-0
 
 def gauss_jordan(n, equations):
     # n = int(input('Enter number of unknowns: '))
