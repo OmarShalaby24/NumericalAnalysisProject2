@@ -6,12 +6,17 @@ import eq_mat
 
 def lu_pivoting(n,equations):
     matrix = eq_mat.inputToMatrix(n,equations)
-    A = np.zeros(shape=(len(matrix)-1, len(matrix)-1))
-    B = np.zeros(shape=(len(matrix)-1, 1))
-    for i in range(len(matrix)-1):
+    A = np.zeros(shape=(len(matrix), len(matrix)))
+    B = np.zeros(shape=(len(matrix), 1))
+    for i in range(len(matrix)):
         for k in range(len(A)):
             A[i][k] = matrix[i][k]
         B[i][0] = matrix[i][k + 1]
+
+    print(len(A))
+    print(matrix)
+    print(A)
+    print(B)
 
     P, L, U = scipy.linalg.lu(A)
 
@@ -45,8 +50,4 @@ def LU(mat):
 
     D = np.linalg.inv(L).dot(values)
     output = np.linalg.inv(coefs).dot(D)
-    print(output)
-
-
-X = lu_pivoting(4,"2x+5y+6z=7,6x+2y+3z=2,x+y+z=1")
-print(X)
+    return output
