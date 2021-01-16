@@ -6,7 +6,7 @@ from tkinter import *
 
 # from GUI import *
 
-# 2x+3y+1z+4,4x+1y+4z-9,3x+4y+6z-0
+equations="2x+5y-7,1x+3y-4"
 
 def gauss_jordan(n, equations):
     # n = int(input('Enter number of unknowns: '))
@@ -37,10 +37,10 @@ def gauss_jordan(n, equations):
 
     for i in range(n):
         output.append('Root%d = %0.3f' % (i, result[i]))
-    # print(x)
+    print(output)
     return output
 
-
+gauss_jordan(2,equations)
 def gauss_jordan_win():
     def clickGaussJordan():
         unknownsNoField = unknownsEntry.get()
