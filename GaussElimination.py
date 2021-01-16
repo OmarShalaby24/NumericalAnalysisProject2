@@ -4,7 +4,7 @@ import sys
 from eq_mat import inputToMatrix
 from tkinter import *
 
-all_equations = "1x+1y-1z+3,6x+2y+2z-2,-3x+4y+1z-1"
+all_equations = "2x+1y+4z-1,1x+2x+3z-1.5,4x-1y+2z-2"
 
 
 ################code sha8al le guassian elimination#############
@@ -51,11 +51,11 @@ def GaussianElimination(numberOfMatrix, equations):
     for i in range(n):
         # print('X%d = %0.2f' % (i, x[i]), end='\t')
         output.append('Root%d = %0.3f' % (i, x[i]))
-
+    print(output)
     return output
 
 
-# GaussianElimination(3,all_equations)
+GaussianElimination(3,all_equations)
 
 
 def gauss_elimination_win():
