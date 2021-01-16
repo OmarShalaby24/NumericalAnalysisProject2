@@ -3,7 +3,7 @@ from tkinter import *
 import tkinter.font as font
 from GaussianJordan import *
 from GaussElimination import *
-from trial import *
+from FullAppGUI import *
 
 root = Tk()
 
