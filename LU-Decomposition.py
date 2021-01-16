@@ -6,13 +6,12 @@ import eq_mat
 
 def lu_pivoting(n,equations):
     matrix = eq_mat.inputToMatrix(n,equations)
-    A = np.empty(shape=(n-1, n-1))
-    B = []
-    for i in range(0,n-1):
-        for j in range(0,n-1):
-            A[i][j] = matrix[i][j]
-    for i in range(0,n-1):
-        B.append(matrix[i][n-1])
+    A = np.zeros(shape=(len(matrix)-1, len(matrix)-1))
+    B = np.zeros(shape=(len(matrix)-1, 1))
+    for i in range(len(matrix)-1):
+        for k in range(len(A)):
+            A[i][k] = matrix[i][k]
+        B[i][0] = matrix[i][k + 1]
 
     P, L, U = scipy.linalg.lu(A)
 
