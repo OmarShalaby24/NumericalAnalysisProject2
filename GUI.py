@@ -9,7 +9,9 @@ from FullAppGUI import *
 
 
 def loadFile():
-    noOfEquations, string, method, iterations, error, initPoints = readFile.readMatrixData("input3.txt")
+    scanFileEntry = fileEntry.get()
+    noOfEquations, string, method, iterations, error, initPoints = readFile.readMatrixData(scanFileEntry)
+
     if method == "gauss-jordon":
         # print(noOfEquations,string)
         gauss_jordan_win(noOfEquations, string)
@@ -28,7 +30,7 @@ root = Tk()
 # to enter function
 
 root.configure(bg="#B7C3D0")
-root.geometry("400x350")
+root.geometry("400x400")
 
 root.title("Numerical Analysis Methods")
 
@@ -52,9 +54,16 @@ gauss_seidel.place(x=118, y=200)
 
 all_methods = Button(root, text="Solve for all methods", width=25, height=1, bg="#162252", fg="white",
                      command=methods_win)
-all_methods.place(x=100, y=270)
+all_methods.place(x=100, y=260)
+
+filelabel = Label(root, text="1.Enter file name", bg="#B7C3D0", fg="black")
+filelabel.place(x=100, y=300)
+
+fileEntry = Entry(root, width=30, bg="white", borderwidth=3)
+fileEntry.insert(0, "input.txt")
+fileEntry.place(x=100, y=320)
 
 file_btn = Button(root, text="Load from file", width=25, height=1, bg="#162252", fg="white", command=loadFile)
-file_btn.place(x=100, y=300)
+file_btn.place(x=100, y=350)
 
 root.mainloop()

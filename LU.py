@@ -72,10 +72,16 @@ def lu_decomposition_win(noOfV=0, equ=""):
         output.delete(0.0, END)
         output.insert(END, LU(inputToMatrix(int(unknownsNoField), equationField)))
 
+    def clickLU_pivot():
+        unknownsNoField = unknownsEntry.get()
+        equationField = equEntry.get()  # this will get the text from the text entry box
+        output.delete(0.0, END)
+        output.insert(END, lu_pivoting(int(unknownsNoField), equationField))
+
     window = Tk()
     window.title("LU Decomposition Method")
     window.configure(bg="#B7C3D0")
-    window.geometry("600x400")
+    window.geometry("650x400")
 
     m_label = Label(window, text="LU Decomposition Method", bg="#162252", fg="white", font=(15))
     m_label.place(x=190, y=20)
@@ -94,8 +100,13 @@ def lu_decomposition_win(noOfV=0, equ=""):
     equEntry.insert(0, equ)
     equEntry.place(x=25, y=175)
 
-    solve_btn = Button(window, text="Solve", width=20, height=1, bg="#162252", fg="white", command=clickLUDecomposition)
+    solve_btn = Button(window, text="Solve without pivot", width=20, height=1, bg="#162252", fg="white",
+                       command=clickLUDecomposition)
     solve_btn.place(x=225, y=230)
+
+    solve_btn = Button(window, text="Solve with pivot", width=20, height=1, bg="#162252", fg="white",
+                       command=clickLU_pivot)
+    solve_btn.place(x=400, y=230)
 
     output = Text(window, width=90, height=8.5, wrap=WORD, background="white")
     output.place(x=0, y=265)

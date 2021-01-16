@@ -29,84 +29,71 @@ def seidel(a, x):
 
 
 def function(equations, numOfEq, numOfIterations, epsilon, initialValues):
-    # int(input())input as number of variable to be solved
+
     # n is the number of equations
     x = initialValues
     n = numOfEq
     output = list()
-    # a = []
-    # b = []
-    # initial solution depending on n(here n=3)
-    # a = [[4, 1, 2], [3, 5, 1], [1, 1, 3]]
-    # b = [4, 7, 3]
-    # print(x)
+
     initialValues = []
     a = inputToMatrix(n, equations)
     listA = [None] * n
-    # print(listA.__len__())
     listLength = listA.__len__()
     l = 0
     while l < n:
         listA[l] = []
         l += 1
-    # print(listA)
+
     index2 = 0
     oldX = []
     flag = True
-    # loop run for m times depending on m the error value
-    # here we specify the number of iteration
+
+    #specify the number of iteration
     for i in range(0, numOfIterations):
         x = seidel(a, x)
         print(x)
+        output.append("%d\t"%i)
+        output.append("roots: ")
         for k in range(len(x)):
-            output.append("%f\t" % x[k])
+            output.append("%f " % x[k])
         k = 0
         relativeEr = []
         for j in x:
             if not flag:
                 error = abs((x[k] - oldX[k]) / x[k])
                 relativeEr.append(error)
-            # print(k)
-            # list[k][index2]=[]
             listA[k].append([i, j])
             k += 1
         index2 = index2 + 1
 
         # print each time the updated solution
-        # print(x)
-
+        output.append("relative Error: ")
         if not flag:
             print(relativeEr)
             for k in range(len(x)):
-                output.append("%f\t" % relativeEr[k])
+                output.append("%f" % relativeEr[k])
         oldX = copy.deepcopy(x)
+        output.append("\n")
 
         relErFlag = True
         if not flag:
             for value in relativeEr:
                 if value > epsilon:
-                    # print(value)
                     relErFlag = False
 
         if relErFlag and not flag:
-            # print("gwa if ")
             break
         flag = False
 
-    # print(list)
     print(output)
     obj = plot.plot(listA)
     obj.draw2()
-    print("llljyfhjdhmf")
-    output.append(output)
-    # return output
+
     return output
 
 
-# function(equations, 3, 5, 0.1, x)
 
-
-def gauss_seidel_win(noOfV=0, eqs="", iter=0, errors=0, initPoint=0):
+def gauss_seidel_win(noOfV=0, eqs="", iter=50, errors=0.00001, initPoint=[0, 0, 0]):
     def clickGaussSeidel():
         unknownsNoField = unknownsEntry.get()
         equationField = equEntry.get()  # this will get the text from the text entry box
