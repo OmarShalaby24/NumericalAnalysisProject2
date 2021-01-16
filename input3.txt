@@ -1,5 +1,5 @@
 3
-gauss-jordon
+LU
 2x+5y+6z-7
 6x+2y+3z-2
 x+y+z-1

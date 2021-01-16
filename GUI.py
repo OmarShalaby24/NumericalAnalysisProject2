@@ -1,20 +1,34 @@
-# import tkinter as tk
 from tkinter import *
 import tkinter.font as font
 from GaussianJordan import *
 from GaussElimination import *
-from trial import *
+from LU import *
 from GaussSiedal import *
-
-
+import readFile
 from FullAppGUI import *
+
+
+def loadFile():
+    noOfEquations, string, method, iterations, error, initPoints = readFile.readMatrixData("input3.txt")
+    if method == "gauss-jordon":
+        # print(noOfEquations,string)
+        gauss_jordan_win(noOfEquations, string)
+    elif method == "gauss-elimination":
+        print(noOfEquations, string)
+        gauss_elimination_win(noOfEquations, string)
+    elif method == "gauss-Seidel":
+        print(iterations, " - ", error, " - ", initPoints)
+        gauss_seidel_win(noOfEquations, string, iterations, error, initPoints)
+    elif method == "LU":
+        lu_decomposition_win(noOfEquations, string)
+
 
 root = Tk()
 
 # to enter function
 
 root.configure(bg="#B7C3D0")
-root.geometry("400x300")
+root.geometry("400x350")
 
 root.title("Numerical Analysis Methods")
 
@@ -33,11 +47,14 @@ lu_decomposition = Button(root, text="LU Decomposition", width=20, height=2, bg=
                           command=lu_decomposition_win)
 lu_decomposition.place(x=118, y=150)
 
-gauss_seidel = Button(root, text="Gauss Seidel", width=20, height=2, bg="#162252", fg="white",command=gauss_seidel_win)
+gauss_seidel = Button(root, text="Gauss Seidel", width=20, height=2, bg="#162252", fg="white", command=gauss_seidel_win)
 gauss_seidel.place(x=118, y=200)
 
 all_methods = Button(root, text="Solve for all methods", width=25, height=1, bg="#162252", fg="white",
                      command=methods_win)
-all_methods.place(x=100, y=250)
+all_methods.place(x=100, y=270)
+
+file_btn = Button(root, text="Load from file", width=25, height=1, bg="#162252", fg="white", command=loadFile)
+file_btn.place(x=100, y=300)
 
 root.mainloop()

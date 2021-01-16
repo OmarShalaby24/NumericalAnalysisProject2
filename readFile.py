@@ -1,8 +1,12 @@
-def readMatrixData(filename="Iterative.txt", isSeidle = False):
+def readMatrixData(filename="input2.txt"):
     f = open(filename)
     noOfEquations = int(f.readline())
     method = f.readline()
     method = method[:-1]
+
+    isSeidle = False
+    if (method == "gauss-Seidel"):
+        isSeidle = True
 
     arrayOfEquations = []
 
@@ -17,11 +21,11 @@ def readMatrixData(filename="Iterative.txt", isSeidle = False):
             string += ","
 
     if isSeidle == True:
-        error = f.readline()
-        x = error.split()
-        error = []
-        for i in range(0, noOfEquations):
-            error.append(float(x[i]))
+        print("is seidle = ", isSeidle)
+        x = f.readline()
+        iterations = int(x)
+        er = f.readline()
+        error = float(er)
         initPoints = f.readline()
         x = initPoints.split()
         initPoints = []
@@ -29,40 +33,7 @@ def readMatrixData(filename="Iterative.txt", isSeidle = False):
             initPoints.append(float(x[i]))
 
         f.close()
-        return noOfEquations, string, method, error, initPoints
+        return noOfEquations, string, method, iterations, error, initPoints
 
     f.close()
-    return noOfEquations, string, method
-    # exp = f.readline()
-    # textEntry.delete(0, END)
-    # textEntry.insert(0, exp)
-    # exp = f.readline()
-    # firstLimit.delete(0, END)
-    # firstLimit.insert(0, exp)
-    # exp = f.readline()
-    # secondLimit.delete(0, END)
-    # secondLimit.insert(0, exp)
-    # exp = f.readline()
-    # epsilon.delete(0, END)
-    # epsilon.insert(0, exp)
-    # exp = f.readline()
-    # iterations.delete(0, END)
-    # iterations.insert(0, exp)
-
-
-file1 = "input.txt"
-file2 = "Iterative.txt"
-
-n, eq, method = readMatrixData(file1)
-print(n)
-print(method)
-print(eq)
-
-print("-----------------------------------")
-
-n, eq, method, errors, init = readMatrixData(file2,True)
-print(n)
-print(method)
-print(eq)
-print(errors)
-print(init)
+    return noOfEquations, string, method, 0, 0, 0

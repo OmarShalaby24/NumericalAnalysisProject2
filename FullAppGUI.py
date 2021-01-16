@@ -35,9 +35,6 @@ def methods_win():
     equEntry = Entry(window, width=90, bg="white", borderwidth=3)
     equEntry.place(x=35, y=175)
 
-    # file_btn = Button(window, text="Load equation from file", width=20, height=1, bg="#53868B", fg="white",
-    #                   command=readData)
-    # file_btn.place(x=285, y=515)
     line = Label(window,
                  text="-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------",
                  bg="#B7C3D0", fg="#162252")
@@ -89,20 +86,25 @@ def methods_win():
     equEntry4.place(x=710, y=375)
 
     iterations_label = Label(window, text="3.Enter number of iterations", bg="#B7C3D0", fg="black")
-    iterations_label.place(x=750, y=415)
+    iterations_label.place(x=695, y=415)
 
-    iterationsEntry = Entry(window, width=15, bg="white", borderwidth=3)
-    iterationsEntry.place(x=910, y=415)
+    iterationsEntry = Entry(window, width=7, bg="white", borderwidth=3)
+    iterationsEntry.place(x=850, y=415)
 
-    # show_graph = Button(window, text="Show Graphs of iteration", width=20, height=1, bg="#162252", fg="white")
-    # show_graph.place(x=1050, y=413)
+    epsilon_label = Label(window, text="4.Enter epsilon", bg="#B7C3D0", fg="black")
+    epsilon_label.place(x=910, y=415)
+
+    epsilonEntry = Entry(window, width=15, bg="white", borderwidth=3)
+    epsilonEntry.place(x=980, y=415)
+
+    initalVal_label = Label(window, text="5.Enter initial values", bg="#B7C3D0", fg="black")
+    initalVal_label.place(x=1100, y=415)
+
+    initalValEntry = Entry(window, width=15, bg="white", borderwidth=3)
+    initalValEntry.place(x=1200, y=415)
 
     solve_btn = Button(window, text="Solve", width=10, height=3, bg="#162252", fg="white", command=solve_all)
     solve_btn.place(x=605, y=575)
-
-    # file_btn = Button(window, text="Load equation from file", width=20, height=1, bg="#53868B", fg="white",
-    #                   command=hanging_line)
-    # file_btn.place(x=605, y=625)
 
     output = Text(window, width=70, height=8.5, wrap=WORD, background="white")
     output.place(x=25, y=445)

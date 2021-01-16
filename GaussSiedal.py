@@ -105,7 +105,7 @@ def function(equations, numOfEq, numOfIterations, epsilon, initialValues):
 # function(equations, 3, 5, 0.1, x)
 
 
-def gauss_seidel_win():
+def gauss_seidel_win(noOfV=0, eqs="", iter=0, errors=0, initPoint=0):
     def clickGaussSeidel():
         unknownsNoField = unknownsEntry.get()
         equationField = equEntry.get()  # this will get the text from the text entry box
@@ -122,9 +122,9 @@ def gauss_seidel_win():
                                     initPoints))
 
     window = Tk()
-    window.title("Bisection Method")
+    window.title("Gauss Seidel Method")
     window.configure(bg="#B7C3D0")
-    window.geometry("600x750")
+    window.geometry("800x750")
 
     m_label = Label(window, text="Gauss Seidel Method", bg="#162252", fg="white", font=(15))
     m_label.place(x=200, y=20)
@@ -133,37 +133,42 @@ def gauss_seidel_win():
     uknowns_label.place(x=220, y=70)
 
     unknownsEntry = Entry(window, width=30, bg="white", borderwidth=3)
+    unknownsEntry.insert(0, noOfV)
     unknownsEntry.place(x=205, y=95)
 
     equations_label = Label(window, text="2.Enter your equations separated by a comma", bg="#B7C3D0", fg="black")
     equations_label.place(x=170, y=150)
 
     equEntry = Entry(window, width=90, bg="white", borderwidth=3)
+    equEntry.insert(0, eqs)
     equEntry.place(x=25, y=175)
 
     iterations_label = Label(window, text="3.Enter number of iterations", bg="#B7C3D0", fg="black")
     iterations_label.place(x=175, y=230)
 
     iterationsEntry = Entry(window, width=15, bg="white", borderwidth=3)
-    iterationsEntry.place(x=200, y=300)
+    iterationsEntry.insert(0, str(iter))
+    iterationsEntry.place(x=200, y=255)
 
     epsilon_label = Label(window, text="4.Enter epsilon", bg="#B7C3D0", fg="black")
-    epsilon_label.place(x=200, y=350)
+    epsilon_label.place(x=200, y=310)
 
     epsilonEntry = Entry(window, width=15, bg="white", borderwidth=3)
-    epsilonEntry.place(x=200, y=415)
+    epsilonEntry.insert(0, str(errors))
+    epsilonEntry.place(x=200, y=335)
 
     initialVal_label = Label(window, text="5.Enter initial values", bg="#B7C3D0", fg="black")
-    initialVal_label.place(x=200, y=450)
+    initialVal_label.place(x=200, y=390)
 
     initialValEntry = Entry(window, width=15, bg="white", borderwidth=3)
-    initialValEntry.place(x=200, y=500)
+    initialValEntry.insert(0, initPoint)
+    initialValEntry.place(x=200, y=415)
 
     solve_btn = Button(window, text="Solve", width=20, height=1, bg="#162252", fg="white",
                        command=clickGaussSeidel)
-    solve_btn.place(x=225, y=550)
+    solve_btn.place(x=225, y=470)
 
-    output = Text(window, width=90, height=8.5, wrap=WORD, background="white")
-    output.place(x=0, y=600)
+    output = Text(window, width=100, height=15, wrap=WORD, background="white")
+    output.place(x=0, y=510)
 
     window.mainloop()

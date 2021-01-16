@@ -3,10 +3,8 @@ import sys
 import eq_mat as matrix
 from tkinter import *
 
+equations = "2x+5y-7,1x+3y-4"
 
-# from GUI import *
-
-equations="2x+5y-7,1x+3y-4"
 
 def gauss_jordan(n, equations):
     # n = int(input('Enter number of unknowns: '))
@@ -40,8 +38,11 @@ def gauss_jordan(n, equations):
     print(output)
     return output
 
-gauss_jordan(2,equations)
-def gauss_jordan_win():
+
+gauss_jordan(2, equations)
+
+
+def gauss_jordan_win(noOfV=0, eqs=""):
     def clickGaussJordan():
         unknownsNoField = unknownsEntry.get()
         equationField = equEntry.get()  # this will get the text from the text entry box
@@ -49,7 +50,7 @@ def gauss_jordan_win():
         output.insert(END, gauss_jordan(int(unknownsNoField), str(equationField)))
 
     window = Tk()
-    window.title("Bisection Method")
+    window.title("Gauss Jordan Method")
     window.configure(bg="#B7C3D0")
     window.geometry("600x400")
 
@@ -60,20 +61,18 @@ def gauss_jordan_win():
     uknowns_label.place(x=220, y=70)
 
     unknownsEntry = Entry(window, width=30, bg="white", borderwidth=3)
+    unknownsEntry.insert(0, noOfV)
     unknownsEntry.place(x=205, y=95)
 
     equations_label = Label(window, text="1.Enter your equations separated by a comma", bg="#B7C3D0", fg="black")
     equations_label.place(x=170, y=150)
 
     equEntry = Entry(window, width=90, bg="white", borderwidth=3)
+    equEntry.insert(0, eqs)
     equEntry.place(x=25, y=175)
 
     solve_btn = Button(window, text="Solve", width=20, height=1, bg="#162252", fg="white", command=clickGaussJordan)
     solve_btn.place(x=225, y=230)
-
-    # file_btn = Button(window, text="Load equation from file", width=20, height=1, bg="#53868B", fg="white",
-    #                   command=readData)
-    # file_btn.place(x=285, y=515)
 
     output = Text(window, width=90, height=8.5, wrap=WORD, background="white")
     output.place(x=0, y=265)
