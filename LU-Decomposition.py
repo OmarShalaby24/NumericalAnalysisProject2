@@ -1,11 +1,18 @@
 import pprint
 import numpy as np
 import scipy.linalg  # SciPy Linear Algebra Library
+import eq_mat
 
-def lu_pivoting(A,B):
 
-    A = np.array([[4, 3, 2], [-2, 2, 3], [3, -5, 2]])
-    B = np.array([25, -10, -4])
+def lu_pivoting(n,equations):
+    matrix = eq_mat.inputToMatrix(n,equations)
+    A = np.empty(shape=(n-1, n-1))
+    B = []
+    for i in range(0,n-1):
+        for j in range(0,n-1):
+            A[i][j] = matrix[i][j]
+    for i in range(0,n-1):
+        B.append(matrix[i][n-1])
 
     P, L, U = scipy.linalg.lu(A)
 
@@ -40,3 +47,7 @@ def LU(mat):
     D = np.linalg.inv(L).dot(values)
     output = np.linalg.inv(coefs).dot(D)
     print(output)
+
+
+X = lu_pivoting(4,"2x+5y+6z=7,6x+2y+3z=2,x+y+z=1")
+print(X)
