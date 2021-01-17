@@ -56,11 +56,11 @@ def LU(mat):
 
     D = np.linalg.inv(L).dot(values)
     result = np.linalg.inv(coefs).dot(D)
-    output.append("U:")
+    output.append("U:\n")
     output.append(coefs)
-    output.append("L:")
+    output.append("\nL:\n")
     output.append(L);
-    output.append("Results:")
+    output.append("\nResults:\n")
     output.append(result)
     return output
 
@@ -70,7 +70,9 @@ def lu_decomposition_win(noOfV=0, equ=""):
         unknownsNoField = unknownsEntry.get()
         equationField = equEntry.get()  # this will get the text from the text entry box
         output.delete(0.0, END)
-        output.insert(END, LU(inputToMatrix(int(unknownsNoField), equationField)))
+        y = LU(inputToMatrix(int(unknownsNoField), equationField))
+        for i in range(len(y)):
+            output.insert(END, y[i])
 
     def clickLU_pivot():
         unknownsNoField = unknownsEntry.get()

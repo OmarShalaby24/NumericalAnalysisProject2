@@ -29,12 +29,17 @@ def seidel(a, x):
 
 
 def function(equations, numOfEq, numOfIterations, epsilon, initialValues):
-
     # n is the number of equations
     x = initialValues
     n = numOfEq
     output = list()
-
+    output.append("i  ")
+    for i in range(numOfEq):
+        output.append("\tx%d" % i)
+    output.append("\trelative error:\t\t")
+    for i in range(numOfEq):
+        output.append("  x%d\t\t" % i)
+    output.append("\n")
     initialValues = []
     a = inputToMatrix(n, equations)
     listA = [None] * n
@@ -48,14 +53,13 @@ def function(equations, numOfEq, numOfIterations, epsilon, initialValues):
     oldX = []
     flag = True
 
-    #specify the number of iteration
+    # specify the number of iteration
     for i in range(0, numOfIterations):
         x = seidel(a, x)
         print(x)
-        output.append("%d\t"%i)
-        output.append("roots: ")
+        output.append("%d  " % i)
         for k in range(len(x)):
-            output.append("%f " % x[k])
+            output.append("%f \t" % x[k])
         k = 0
         relativeEr = []
         for j in x:
@@ -67,11 +71,11 @@ def function(equations, numOfEq, numOfIterations, epsilon, initialValues):
         index2 = index2 + 1
 
         # print each time the updated solution
-        output.append("relative Error: ")
+        output.append("\t\t\t")
         if not flag:
             print(relativeEr)
             for k in range(len(x)):
-                output.append("%f" % relativeEr[k])
+                output.append("%f\t\t" % relativeEr[k])
         oldX = copy.deepcopy(x)
         output.append("\n")
 
@@ -92,7 +96,6 @@ def function(equations, numOfEq, numOfIterations, epsilon, initialValues):
     return output
 
 
-
 def gauss_seidel_win(noOfV=0, eqs="", iter=50, errors=0.00001, initPoint=[0, 0, 0]):
     def clickGaussSeidel():
         unknownsNoField = unknownsEntry.get()
@@ -106,8 +109,9 @@ def gauss_seidel_win(noOfV=0, eqs="", iter=50, errors=0.00001, initPoint=[0, 0, 
         for i in range(0, int(unknownsNoField)):
             initPoints.append(float(x[i]))
         output.delete(0.0, END)
-        output.insert(END, function(equationField, int(unknownsNoField), int(iterationsField), float(epsilonField),
-                                    initPoints))
+        y = function(equationField, int(unknownsNoField), int(iterationsField), float(epsilonField), initPoints)
+        for i in range(len(y)):
+            output.insert(END, y[i])
 
     window = Tk()
     window.title("Gauss Seidel Method")
