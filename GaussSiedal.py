@@ -76,6 +76,9 @@ def function(equations, numOfEq, numOfIterations, epsilon, initialValues):
             print(relativeEr)
             for k in range(len(x)):
                 output.append("%f\t\t" % relativeEr[k])
+        else:
+            for k in range(len(x)):
+                output.append("  --\t\t")
         oldX = copy.deepcopy(x)
         output.append("\n")
 
