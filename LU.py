@@ -83,10 +83,10 @@ def lu_decomposition_win(noOfV=0, equ=""):
     window = Tk()
     window.title("LU Decomposition Method")
     window.configure(bg="#B7C3D0")
-    window.geometry("650x400")
+    window.geometry("600x500")
 
     m_label = Label(window, text="LU Decomposition Method", bg="#162252", fg="white", font=(15))
-    m_label.place(x=190, y=20)
+    m_label.place(x=202, y=20)
 
     uknowns_label = Label(window, text="1.Enter number of unknowns", bg="#B7C3D0", fg="black")
     uknowns_label.place(x=220, y=70)
@@ -104,11 +104,11 @@ def lu_decomposition_win(noOfV=0, equ=""):
 
     solve_btn = Button(window, text="Solve without pivot", width=20, height=1, bg="#162252", fg="white",
                        command=clickLUDecomposition)
-    solve_btn.place(x=225, y=230)
+    solve_btn.place(x=130, y=230)
 
     solve_btn = Button(window, text="Solve with pivot", width=20, height=1, bg="#162252", fg="white",
                        command=clickLU_pivot)
-    solve_btn.place(x=400, y=230)
+    solve_btn.place(x=310, y=230)
 
-    output = Text(window, width=90, height=8.5, wrap=WORD, background="white")
+    output = Text(window, width=90, height=15, wrap=WORD, background="white")
     output.place(x=0, y=265)

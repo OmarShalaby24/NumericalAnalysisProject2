@@ -48,7 +48,7 @@ def GaussianElimination(numberOfMatrix, equations):
     print('\nRequired solution is: ')
     for i in range(n):
         # print('X%d = %0.2f' % (i, x[i]), end='\t')
-        output.append('Root%d = %0.3f' % (i, x[i]))
+        output.append('Root%d = %0.3f' % (i+1, x[i]))
     print(output)
     return output
 
@@ -69,7 +69,7 @@ def gauss_elimination_win(noOfV=0, eqs=""):
     window.geometry("600x400")
 
     m_label = Label(window, text="Gauss Elimination Method", bg="#162252", fg="white", font=(15))
-    m_label.place(x=200, y=20)
+    m_label.place(x=203, y=20)
 
     uknowns_label = Label(window, text="1.Enter number of unknowns", bg="#B7C3D0", fg="black")
     uknowns_label.place(x=220, y=70)

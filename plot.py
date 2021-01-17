@@ -67,7 +67,9 @@ class plot:
                 x, y = self.hanging_line(points[i], points[i + 1])
                 plot.plot(x, y)
                 i = i + 1
+
             plot.plot(x_list, y_list, 'o')
+            plot.set_title('Number of iterations for variable vs obtained root')
             canvas = FigureCanvasTkAgg(fig, master=window)
             canvas.get_tk_widget().pack()
             cnt = cnt + 1

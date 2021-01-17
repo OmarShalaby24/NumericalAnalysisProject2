@@ -56,8 +56,8 @@ all_methods = Button(root, text="Solve for all methods", width=25, height=1, bg=
                      command=methods_win)
 all_methods.place(x=100, y=260)
 
-filelabel = Label(root, text="1.Enter file name", bg="#B7C3D0", fg="black")
-filelabel.place(x=100, y=300)
+filelabel = Label(root, text="Enter file name", bg="#B7C3D0", fg="black")
+filelabel.place(x=150, y=300)
 
 fileEntry = Entry(root, width=30, bg="white", borderwidth=3)
 fileEntry.insert(0, "input.txt")

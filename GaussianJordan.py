@@ -34,7 +34,7 @@ def gauss_jordan(n, equations):
         result[i] = Matrix[i][n] / Matrix[i][i]
 
     for i in range(n):
-        output.append('Root%d = %0.3f' % (i, result[i]))
+        output.append('Root%d = %0.3f' % (i+1, result[i]))
     print(output)
     return output
 
@@ -55,7 +55,7 @@ def gauss_jordan_win(noOfV=0, eqs=""):
     window.geometry("600x400")
 
     m_label = Label(window, text="Gauss Jordan Method", bg="#162252", fg="white", font=(15))
-    m_label.place(x=200, y=20)
+    m_label.place(x=220, y=20)
 
     uknowns_label = Label(window, text="1.Enter number of unknowns", bg="#B7C3D0", fg="black")
     uknowns_label.place(x=220, y=70)

@@ -22,6 +22,11 @@ def methods_win():
         output3.delete(0.0, END)
         output3.insert(END, LU(inputToMatrix(int(unknownsNoField), equationField)))
 
+        unknownsNoField = unknownsEntry3.get()
+        equationField = equEntry3.get()  # this will get the text from the text entry box
+        # output3.delete(0.0, END)
+        output3.insert(END, lu_pivoting(int(unknownsNoField), equationField))
+
         unknownsNoField = unknownsEntry4.get()
         equationField = equEntry4.get()  # this will get the text from the text entry box
         iterationsField = iterationsEntry.get()
@@ -32,9 +37,9 @@ def methods_win():
         initPoints = []
         for i in range(0, int(unknownsNoField)):
             initPoints.append(float(x[i]))
-        output.delete(0.0, END)
-        output.insert(END, function(equationField, int(unknownsNoField), int(iterationsField), float(epsilonField),
-                                    initPoints))
+        output4.delete(0.0, END)
+        output4.insert(END, function(equationField, int(unknownsNoField), int(iterationsField), float(epsilonField),
+                                     initPoints))
 
     window = Tk()
     window.title("NUMERICAL METHODS")
@@ -42,7 +47,7 @@ def methods_win():
     window.geometry("1300x800")
 
     m_label = Label(window, text="Gauss Elimination Method", bg="#162252", fg="white", font=(15))
-    m_label.place(x=220, y=20)
+    m_label.place(x=203, y=20)
 
     uknowns_label = Label(window, text="1.Enter number of unknowns", bg="#B7C3D0", fg="black")
     uknowns_label.place(x=220, y=70)
@@ -62,7 +67,7 @@ def methods_win():
     line.place(x=70, y=205)
 
     m_label2 = Label(window, text="Gauss Jordan Method", bg="#162252", fg="white", font=(15))
-    m_label2.place(x=882, y=20)
+    m_label2.place(x=895, y=20)
 
     uknowns_label2 = Label(window, text="1.Enter number of unknowns", bg="#B7C3D0", fg="black")
     uknowns_label2.place(x=900, y=70)
@@ -92,7 +97,7 @@ def methods_win():
     equEntry3.place(x=35, y=375)
 
     m_label4 = Label(window, text="Gauss Seidel Method", bg="#162252", fg="white", font=(15))
-    m_label4.place(x=890, y=230)
+    m_label4.place(x=897, y=230)
 
     uknowns_label4 = Label(window, text="1.Enter number of unknowns", bg="#B7C3D0", fg="black")
     uknowns_label4.place(x=900, y=270)
@@ -106,26 +111,35 @@ def methods_win():
     equEntry4 = Entry(window, width=90, bg="white", borderwidth=3)
     equEntry4.place(x=710, y=375)
 
-    iterations_label = Label(window, text="3.Enter number of iterations", bg="#B7C3D0", fg="black")
-    iterations_label.place(x=695, y=415)
+    iterations_label = Label(window, text="3.Enter iteration no.", bg="#B7C3D0", fg="black")
+    iterations_label.place(x=705, y=405)
 
     iterationsEntry = Entry(window, width=5, bg="white", borderwidth=3)
-    iterationsEntry.place(x=850, y=415)
+    iterationsEntry.place(x=820, y=405)
 
     epsilon_label = Label(window, text="4.Enter epsilon", bg="#B7C3D0", fg="black")
-    epsilon_label.place(x=895, y=415)
+    epsilon_label.place(x=860, y=405)
 
     epsilonEntry = Entry(window, width=15, bg="white", borderwidth=3)
-    epsilonEntry.place(x=990, y=415)
+    epsilonEntry.place(x=945, y=405)
 
     initalVal_label = Label(window, text="5.Enter initial values", bg="#B7C3D0", fg="black")
-    initalVal_label.place(x=1090, y=415)
+    initalVal_label.place(x=1050, y=405)
 
     initalValEntry = Entry(window, width=15, bg="white", borderwidth=3)
-    initalValEntry.place(x=1190, y=415)
+    initalValEntry.place(x=1160, y=405)
 
     solve_btn = Button(window, text="Solve", width=10, height=3, bg="#162252", fg="white", command=solve_all)
     solve_btn.place(x=605, y=575)
+
+    elimination_label = Label(window, text="Gauss Elimination", bg="#B7C3D0", fg="black")
+    elimination_label.place(x=240, y=428)
+    jordan_label = Label(window, text="Gauss Jordan", bg="#B7C3D0", fg="black")
+    jordan_label.place(x=955, y=428)
+    lu_label = Label(window, text="LU Decomposition with and without pivoting", bg="#B7C3D0", fg="black")
+    lu_label.place(x=170, y=598)
+    seidel_label = Label(window, text="Gauss Seidel", bg="#B7C3D0", fg="black")
+    seidel_label.place(x=955, y=598)
 
     output = Text(window, width=70, height=8.5, wrap=WORD, background="white")
     output.place(x=25, y=445)
