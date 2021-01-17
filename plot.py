@@ -51,7 +51,6 @@ class plot:
 
         while cnt < len(self.list):
             window = Tk()
-            # window=windwos[cnt]
             points = self.list[cnt]
             x_list = []
             y_list = []
@@ -63,7 +62,6 @@ class plot:
             plot = fig.add_subplot(1, 1, 1)
             i = 0
             while i < len(points) - 1:
-                print("j")
                 x, y = self.hanging_line(points[i], points[i + 1])
                 plot.plot(x, y)
                 i = i + 1

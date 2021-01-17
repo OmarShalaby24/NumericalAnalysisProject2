@@ -9,22 +9,18 @@ x = [0, 0, 0]
 
 
 def seidel(a, x):
-    # Finding length of a(3)
     # n is the number of equations
     n = len(a)
 
-    # for loop for 3 times as to calculate x, y , z
     for j in range(0, n):
-        # temp variable to store b[j]
         temp = a[j][n]
 
-        # to calculate respective xi, yi, zi
         for i in range(0, n):
             if (j != i):
                 temp -= a[j][i] * x[i]
             # updating the value of our solution
         x[j] = temp / a[j][j]
-    # returning our updated solution
+    # updated solution
     return x
 
 
@@ -96,6 +92,11 @@ def function(equations, numOfEq, numOfIterations, epsilon, initialValues):
     obj = plot.plot(listA)
     obj.draw2()
 
+    f = open("SeidelOutput.txt", "w")
+    y = output
+    for i in range(len(y)):
+        f.write(str(y[i]))
+    f.close()
     return output
 
 

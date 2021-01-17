@@ -7,14 +7,8 @@ equations = "2x+5y-7,1x+3y-4"
 
 
 def gauss_jordan(n, equations):
-    # n = int(input('Enter number of unknowns: '))
-    # print('Enter equations separated by comma:')
-    # equations = input()
-
     output = list()
     Matrix = matrix.inputToMatrix(n, equations)
-
-    # print(Matrix)
 
     result = np.zeros(n)
 
@@ -34,12 +28,15 @@ def gauss_jordan(n, equations):
         result[i] = Matrix[i][n] / Matrix[i][i]
 
     for i in range(n):
-        output.append('Root%d = %0.3f' % (i+1, result[i]))
+        output.append('Root%d = %0.3f' % (i + 1, result[i]))
     print(output)
+    f = open("JordanOutput.txt", "w")
+    f.write(str(output))
+    f.close()
     return output
 
 
-gauss_jordan(2, equations)
+# gauss_jordan(2, equations)
 
 
 def gauss_jordan_win(noOfV=0, eqs=""):

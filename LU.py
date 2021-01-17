@@ -62,6 +62,11 @@ def LU(mat):
     output.append(L);
     output.append("\nResults:\n")
     output.append(result)
+    f = open("LUOutput.txt", "w")
+    y = output
+    for i in range(len(y)):
+        f.write(str(y[i]))
+    f.close()
     return output
 
 

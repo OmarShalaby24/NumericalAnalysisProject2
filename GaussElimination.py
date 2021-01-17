@@ -11,21 +11,18 @@ def GaussianElimination(numberOfMatrix, equations):
     output = list()
 
     n = numberOfMatrix
-    # Making numpy array of n x n+1 size and initializing
-    # to zero for storing augmented matrix
+
     a = np.zeros((n, n + 1))
 
-    # Making numpy array of n size and initializing
-    # to zero for storing solution vector
     x = np.zeros(n)
 
-    # Reading augmented matrix coefficients
-    print('Enter Augmented Matrix Coefficients:')
     a = inputToMatrix(numberOfMatrix, equations)
+
     # Applying Gauss Elimination
     for i in range(n):
         if a[i][i] == 0.0:
             sys.exit('Divide by zero detected!')
+            output.append('Divide by zero detected!')
 
         for j in range(i + 1, n):
             ratio = a[j][i] / a[i][i]
@@ -44,16 +41,18 @@ def GaussianElimination(numberOfMatrix, equations):
 
         x[i] = x[i] / a[i][i]
 
-    # Displaying solution
+    # solution
     print('\nRequired solution is: ')
     for i in range(n):
-        # print('X%d = %0.2f' % (i, x[i]), end='\t')
-        output.append('Root%d = %0.3f' % (i+1, x[i]))
+        output.append('Root%d = %0.3f' % (i + 1, x[i]))
     print(output)
+    f = open("EliminationOutput.txt", "w")
+    f.write(str(output))
+    f.close()
     return output
 
 
-GaussianElimination(3, all_equations)
+# GaussianElimination(3, all_equations)
 
 
 def gauss_elimination_win(noOfV=0, eqs=""):
