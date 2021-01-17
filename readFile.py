@@ -21,7 +21,6 @@ def readMatrixData(filename="input2.txt"):
             string += ","
 
     if isSeidle == True:
-        print("is seidle = ", isSeidle)
         x = f.readline()
         iterations = int(x)
         er = f.readline()

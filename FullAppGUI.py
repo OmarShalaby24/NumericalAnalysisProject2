@@ -1,11 +1,11 @@
 from GaussianJordan import *
 from GaussElimination import *
-from GaussSiedal import *
+from GaussSeidel import *
 from LU import *
 from plot import *
 
 
-def methods_win():
+def methods_win(iter=50, errors=0.00001, initPoint=[0, 0, 0]):
     def solve_all():
         output_win = Tk()
         output_win.title("NUMERICAL METHODS")
@@ -40,22 +40,18 @@ def methods_win():
         equationField = equEntry3.get()
         output3.delete(0.0, END)
         output3.insert(END, '**LU Without pivoting**\n\n')
-        y = LU(inputToMatrix(int(unknownsNoField), equationField))
-        for i in range(len(y)):
-            output3.insert(END, y[i])
+        output3.insert(END, LU(inputToMatrix(int(unknownsNoField), equationField)))
         output3.insert(END, '\n\n**LU With pivoting**\n\n')
 
         unknownsNoField = unknownsEntry3.get()
         equationField = equEntry3.get()
-        y = lu_pivoting(int(unknownsNoField), equationField)
-        for i in range(len(y)):
-            output3.insert(END, y[i])
+        output3.insert(END, lu_pivoting(int(unknownsNoField), equationField))
 
         unknownsNoField = unknownsEntry4.get()
         equationField = equEntry4.get()
         iterationsField = iterationsEntry.get()
         epsilonField = epsilonEntry.get()
-        initialValField = initalValEntry.get()
+        initialValField = initialValEntry.get()
         initPoints = initialValField
         x = initPoints.split()
         initPoints = []
@@ -131,30 +127,35 @@ def methods_win():
 
     unknownsEntry4 = Entry(window, width=30, bg="white", borderwidth=3)
     unknownsEntry4.place(x=880, y=295)
+    # unknownsEntry4.insert(0, noOfV)
 
     equations_label4 = Label(window, text="2.Enter your equations separated by a comma", bg="#B7C3D0", fg="black")
     equations_label4.place(x=850, y=350)
 
     equEntry4 = Entry(window, width=90, bg="white", borderwidth=3)
     equEntry4.place(x=710, y=375)
+    # equEntry4.insert(0, eqs)
 
     iterations_label = Label(window, text="3.Enter iteration no.", bg="#B7C3D0", fg="black")
     iterations_label.place(x=705, y=415)
 
     iterationsEntry = Entry(window, width=5, bg="white", borderwidth=3)
     iterationsEntry.place(x=820, y=415)
+    iterationsEntry.insert(0, str(iter))
 
     epsilon_label = Label(window, text="4.Enter epsilon", bg="#B7C3D0", fg="black")
     epsilon_label.place(x=860, y=415)
 
     epsilonEntry = Entry(window, width=15, bg="white", borderwidth=3)
     epsilonEntry.place(x=945, y=415)
+    epsilonEntry.insert(0, str(errors))
 
-    initalVal_label = Label(window, text="5.Enter initial values", bg="#B7C3D0", fg="black")
-    initalVal_label.place(x=1050, y=415)
+    initialVal_label = Label(window, text="5.Enter initial values", bg="#B7C3D0", fg="black")
+    initialVal_label.place(x=1050, y=415)
 
-    initalValEntry = Entry(window, width=15, bg="white", borderwidth=3)
-    initalValEntry.place(x=1160, y=415)
+    initialValEntry = Entry(window, width=15, bg="white", borderwidth=3)
+    initialValEntry.place(x=1160, y=415)
+    initialValEntry.insert(0, initPoint)
 
     solve_btn = Button(window, text="Solve", width=20, height=1, bg="#162252", fg="white", command=solve_all)
     solve_btn.place(x=570, y=455)

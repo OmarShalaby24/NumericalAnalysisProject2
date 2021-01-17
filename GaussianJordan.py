@@ -3,7 +3,8 @@ import sys
 import eq_mat as matrix
 from tkinter import *
 
-equations = "2x+5y-7,1x+3y-4"
+
+# "2x+5y-7,1x+3y-4"
 
 
 def gauss_jordan(n, equations):
@@ -14,8 +15,8 @@ def gauss_jordan(n, equations):
 
     for i in range(n):
         if Matrix[i][i] == 0.0:
-            sys.exit('Divide by zero detected!')
             output.append('Divide by zero detected!')
+            return output
 
         for j in range(n):
             if i != j:
@@ -29,20 +30,17 @@ def gauss_jordan(n, equations):
 
     for i in range(n):
         output.append('Root%d = %0.3f' % (i + 1, result[i]))
-    print(output)
     f = open("JordanOutput.txt", "w")
     f.write(str(output))
     f.close()
     return output
 
 
-# gauss_jordan(2, equations)
-
-
+############# GUI #############
 def gauss_jordan_win(noOfV=0, eqs=""):
     def clickGaussJordan():
         unknownsNoField = unknownsEntry.get()
-        equationField = equEntry.get()  # this will get the text from the text entry box
+        equationField = equEntry.get()
         output.delete(0.0, END)
         output.insert(END, gauss_jordan(int(unknownsNoField), equationField))
 

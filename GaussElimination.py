@@ -4,7 +4,8 @@ import sys
 from eq_mat import inputToMatrix
 from tkinter import *
 
-all_equations = "2x+1y+4z-1,1x+2x+3z-1.5,4x-1y+2z-2"
+
+# "2x+1y+4z-1,1x+2x+3z-1.5,4x-1y+2z-2"
 
 
 def GaussianElimination(numberOfMatrix, equations):
@@ -21,8 +22,8 @@ def GaussianElimination(numberOfMatrix, equations):
     # Applying Gauss Elimination
     for i in range(n):
         if a[i][i] == 0.0:
-            sys.exit('Divide by zero detected!')
             output.append('Divide by zero detected!')
+            return output
 
         for j in range(i + 1, n):
             ratio = a[j][i] / a[i][i]
@@ -42,23 +43,19 @@ def GaussianElimination(numberOfMatrix, equations):
         x[i] = x[i] / a[i][i]
 
     # solution
-    print('\nRequired solution is: ')
     for i in range(n):
         output.append('Root%d = %0.3f' % (i + 1, x[i]))
-    print(output)
     f = open("EliminationOutput.txt", "w")
     f.write(str(output))
     f.close()
     return output
 
 
-# GaussianElimination(3, all_equations)
-
-
+############# GUI #############
 def gauss_elimination_win(noOfV=0, eqs=""):
     def clickGaussElimination():
         unknownsNoField = unknownsEntry.get()
-        equationField = equEntry.get()  # this will get the text from the text entry box
+        equationField = equEntry.get()
         output.delete(0.0, END)
         output.insert(END, GaussianElimination(int(unknownsNoField), equationField))
 

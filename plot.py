@@ -25,30 +25,7 @@ class plot:
 
     def draw(self):
 
-        print(self.list)
-        point1 = [-0.64, 3.1]
-        point2 = [1.87, 3.36]
-        point3 = [4.45, 2.86]
-        points = self.list[0]
-        i = 0
-        print(len(points))
-        while i < len(points) - 1:
-            x, y = self.hanging_line(points[i], points[i + 1])
-            plt.plot(points[i][0], points[i][1], 'o')
-            plt.plot(points[i + 1][0], points[i + 1][1], 'o')
-            plt.plot(x, y)
-            i = i + 1
-
-        plt.show()
-
-    def draw2(self):
-
-        point1 = [-0.64, 3.1]
-        point2 = [1.87, 3.36]
-        point3 = [4.45, 2.86]
         cnt = 0
-        points = self.list
-
         while cnt < len(self.list):
             window = Tk()
             points = self.list[cnt]

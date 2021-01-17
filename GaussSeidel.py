@@ -4,8 +4,8 @@ import plot
 import copy
 from tkinter import *
 
-equations = "4x+1y+2z-4,3x+5y+1z-7,1x+1y+3z-3"
-x = [0, 0, 0]
+
+# "4x+1y+2z-4,3x+5y+1z-7,1x+1y+3z-3"
 
 
 def seidel(a, x):
@@ -52,7 +52,6 @@ def function(equations, numOfEq, numOfIterations, epsilon, initialValues):
     # specify the number of iteration
     for i in range(0, numOfIterations):
         x = seidel(a, x)
-        print(x)
         output.append("%d  " % i)
         for k in range(len(x)):
             output.append("%f \t" % x[k])
@@ -69,7 +68,6 @@ def function(equations, numOfEq, numOfIterations, epsilon, initialValues):
         # print each time the updated solution
         output.append("\t\t\t")
         if not flag:
-            print(relativeEr)
             for k in range(len(x)):
                 output.append("%f\t\t" % relativeEr[k])
         else:
@@ -88,9 +86,8 @@ def function(equations, numOfEq, numOfIterations, epsilon, initialValues):
             break
         flag = False
 
-    print(output)
     obj = plot.plot(listA)
-    obj.draw2()
+    obj.draw()
 
     f = open("SeidelOutput.txt", "w")
     y = output
@@ -100,10 +97,11 @@ def function(equations, numOfEq, numOfIterations, epsilon, initialValues):
     return output
 
 
+############# GUI #############
 def gauss_seidel_win(noOfV=0, eqs="", iter=50, errors=0.00001, initPoint=[0, 0, 0]):
     def clickGaussSeidel():
         unknownsNoField = unknownsEntry.get()
-        equationField = equEntry.get()  # this will get the text from the text entry box
+        equationField = equEntry.get()
         iterationsField = iterationsEntry.get()
         epsilonField = epsilonEntry.get()
         initialValField = initialValEntry.get()

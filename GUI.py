@@ -3,7 +3,7 @@ import tkinter.font as font
 from GaussianJordan import *
 from GaussElimination import *
 from LU import *
-from GaussSiedal import *
+from GaussSeidel import *
 import readFile
 from FullAppGUI import *
 
@@ -13,25 +13,18 @@ def loadFile():
     noOfEquations, string, method, iterations, error, initPoints = readFile.readMatrixData(scanFileEntry)
 
     if method == "gauss-jordon":
-        # print(noOfEquations,string)
         gauss_jordan_win(noOfEquations, string)
     elif method == "gauss-elimination":
-        print(noOfEquations, string)
         gauss_elimination_win(noOfEquations, string)
     elif method == "gauss-Seidel":
-        print(iterations, " - ", error, " - ", initPoints)
         gauss_seidel_win(noOfEquations, string, iterations, error, initPoints)
     elif method == "LU":
         lu_decomposition_win(noOfEquations, string)
 
 
 root = Tk()
-
-# to enter function
-
 root.configure(bg="#B7C3D0")
 root.geometry("400x400")
-
 root.title("Numerical Analysis Methods")
 
 label = Label(text="Choose a method for solution", bg="#B7C3D0", fg="black")

@@ -16,11 +16,6 @@ def lu_pivoting(n, equations):
             A[i][k] = matrix[i][k]
         B[i][0] = matrix[i][k + 1]
 
-    print(len(A))
-    print(matrix)
-    print(A)
-    print(B)
-
     P, L, U = scipy.linalg.lu(A)
 
     d = np.linalg.inv(L).dot(B)
@@ -32,6 +27,11 @@ def lu_pivoting(n, equations):
     output.append(L)
     output.append("\nResults:\n")
     output.append(x)
+    f = open("LU_pivotOutput.txt", "w")
+    y = output
+    for i in range(len(y)):
+        f.write(str(y[i]))
+    f.close()
     return output
 
 
@@ -58,9 +58,6 @@ def LU(mat):
             for j in range(len(coefs[i])):
                 coefs[i][j] -= ratio * coefs[k][j]
 
-    # print(coefs)
-    # print(L)
-
     D = np.linalg.inv(L).dot(values)
     result = np.linalg.inv(coefs).dot(D)
     output.append("U:\n")
@@ -80,7 +77,7 @@ def LU(mat):
 def lu_decomposition_win(noOfV=0, equ=""):
     def clickLUDecomposition():
         unknownsNoField = unknownsEntry.get()
-        equationField = equEntry.get()  # this will get the text from the text entry box
+        equationField = equEntry.get()
         output.delete(0.0, END)
         y = LU(inputToMatrix(int(unknownsNoField), equationField))
         for i in range(len(y)):
@@ -88,7 +85,7 @@ def lu_decomposition_win(noOfV=0, equ=""):
 
     def clickLU_pivot():
         unknownsNoField = unknownsEntry.get()
-        equationField = equEntry.get()  # this will get the text from the text entry box
+        equationField = equEntry.get()
         output.delete(0.0, END)
         y = lu_pivoting(int(unknownsNoField), equationField)
         for i in range(len(y)):
