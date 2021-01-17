@@ -24,8 +24,15 @@ def lu_pivoting(n, equations):
     P, L, U = scipy.linalg.lu(A)
 
     d = np.linalg.inv(L).dot(B)
-    X = np.linalg.inv(U).dot(d)
-    return X
+    x = np.linalg.inv(U).dot(d)
+    output = list()
+    output.append("U:\n")
+    output.append(U)
+    output.append("\nL:\n")
+    output.append(L)
+    output.append("\nResults:\n")
+    output.append(x)
+    return output
 
 
 def LU(mat):
@@ -59,7 +66,7 @@ def LU(mat):
     output.append("U:\n")
     output.append(coefs)
     output.append("\nL:\n")
-    output.append(L);
+    output.append(L)
     output.append("\nResults:\n")
     output.append(result)
     f = open("LUOutput.txt", "w")
@@ -83,7 +90,9 @@ def lu_decomposition_win(noOfV=0, equ=""):
         unknownsNoField = unknownsEntry.get()
         equationField = equEntry.get()  # this will get the text from the text entry box
         output.delete(0.0, END)
-        output.insert(END, lu_pivoting(int(unknownsNoField), equationField))
+        y = lu_pivoting(int(unknownsNoField), equationField)
+        for i in range(len(y)):
+            output.insert(END, y[i])
 
     window = Tk()
     window.title("LU Decomposition Method")

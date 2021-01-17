@@ -40,12 +40,16 @@ def methods_win():
         equationField = equEntry3.get()
         output3.delete(0.0, END)
         output3.insert(END, '**LU Without pivoting**\n\n')
-        output3.insert(END, LU(inputToMatrix(int(unknownsNoField), equationField)))
+        y = LU(inputToMatrix(int(unknownsNoField), equationField))
+        for i in range(len(y)):
+            output3.insert(END, y[i])
         output3.insert(END, '\n\n**LU With pivoting**\n\n')
 
         unknownsNoField = unknownsEntry3.get()
         equationField = equEntry3.get()
-        output3.insert(END, lu_pivoting(int(unknownsNoField), equationField))
+        y = lu_pivoting(int(unknownsNoField), equationField)
+        for i in range(len(y)):
+            output3.insert(END, y[i])
 
         unknownsNoField = unknownsEntry4.get()
         equationField = equEntry4.get()
