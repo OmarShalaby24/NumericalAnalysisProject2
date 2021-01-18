@@ -74,6 +74,7 @@ def LU(mat):
     return output
 
 
+############# GUI #############
 def lu_decomposition_win(noOfV=0, equ=""):
     def clickLUDecomposition():
         unknownsNoField = unknownsEntry.get()
@@ -99,7 +100,7 @@ def lu_decomposition_win(noOfV=0, equ=""):
     m_label = Label(window, text="LU Decomposition Method", bg="#162252", fg="white", font=(15))
     m_label.place(x=202, y=20)
 
-    uknowns_label = Label(window, text="1.Enter number of unknowns", bg="#B7C3D0", fg="black")
+    uknowns_label = Label(window, text="1.Enter number of equations", bg="#B7C3D0", fg="black")
     uknowns_label.place(x=220, y=70)
 
     unknownsEntry = Entry(window, width=30, bg="white", borderwidth=3)

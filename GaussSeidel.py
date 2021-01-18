@@ -5,7 +5,7 @@ import copy
 from tkinter import *
 
 
-# "4x+1y+2z-4,3x+5y+1z-7,1x+1y+3z-3"
+# "4x+y+2z-4,3x+5y+z-7,x+y+3z-3"
 
 
 def seidel(a, x):
@@ -31,10 +31,10 @@ def function(equations, numOfEq, numOfIterations, epsilon, initialValues):
     output = list()
     output.append("i  ")
     for i in range(numOfEq):
-        output.append("\tx%d" % i)
+        output.append("\troot%d" % (i+1))
     output.append("\trelative error:\t\t")
     for i in range(numOfEq):
-        output.append("  x%d\t\t" % i)
+        output.append("  root%d\t\t" % (i+1))
     output.append("\n")
     initialValues = []
     a = inputToMatrix(n, equations)
@@ -123,7 +123,7 @@ def gauss_seidel_win(noOfV=0, eqs="", iter=50, errors=0.00001, initPoint=[0, 0, 
     m_label = Label(window, text="Gauss Seidel Method", bg="#162252", fg="white", font=(15))
     m_label.place(x=317, y=20)
 
-    uknowns_label = Label(window, text="1.Enter number of unknowns", bg="#B7C3D0", fg="black")
+    uknowns_label = Label(window, text="1.Enter number of equations", bg="#B7C3D0", fg="black")
     uknowns_label.place(x=313, y=70)
 
     unknownsEntry = Entry(window, width=30, bg="white", borderwidth=3)

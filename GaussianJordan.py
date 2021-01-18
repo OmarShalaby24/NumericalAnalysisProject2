@@ -4,7 +4,7 @@ import eq_mat as matrix
 from tkinter import *
 
 
-# "2x+5y-7,1x+3y-4"
+# "2x+5y-7,x+3y-4"
 
 
 def gauss_jordan(n, equations):
@@ -15,7 +15,7 @@ def gauss_jordan(n, equations):
 
     for i in range(n):
         if Matrix[i][i] == 0.0:
-            output.append('Divide by zero detected!')
+            output.append('ERROR! Dividing by zero')
             return output
 
         for j in range(n):
@@ -52,7 +52,7 @@ def gauss_jordan_win(noOfV=0, eqs=""):
     m_label = Label(window, text="Gauss Jordan Method", bg="#162252", fg="white", font=(15))
     m_label.place(x=220, y=20)
 
-    uknowns_label = Label(window, text="1.Enter number of unknowns", bg="#B7C3D0", fg="black")
+    uknowns_label = Label(window, text="1.Enter number of equations", bg="#B7C3D0", fg="black")
     uknowns_label.place(x=220, y=70)
 
     unknownsEntry = Entry(window, width=30, bg="white", borderwidth=3)

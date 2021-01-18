@@ -5,8 +5,7 @@ from eq_mat import inputToMatrix
 from tkinter import *
 
 
-# "2x+1y+4z-1,1x+2x+3z-1.5,4x-1y+2z-2"
-
+# "2x+y+4z-1,x+2x+3z-1.5,4x-y+2z-2"
 
 def GaussianElimination(numberOfMatrix, equations):
     output = list()
@@ -22,7 +21,7 @@ def GaussianElimination(numberOfMatrix, equations):
     # Applying Gauss Elimination
     for i in range(n):
         if a[i][i] == 0.0:
-            output.append('Divide by zero detected!')
+            output.append('ERROR! Dividing by zero')
             return output
 
         for j in range(i + 1, n):
@@ -67,7 +66,7 @@ def gauss_elimination_win(noOfV=0, eqs=""):
     m_label = Label(window, text="Gauss Elimination Method", bg="#162252", fg="white", font=(15))
     m_label.place(x=203, y=20)
 
-    uknowns_label = Label(window, text="1.Enter number of unknowns", bg="#B7C3D0", fg="black")
+    uknowns_label = Label(window, text="1.Enter number of equations", bg="#B7C3D0", fg="black")
     uknowns_label.place(x=220, y=70)
 
     unknownsEntry = Entry(window, width=30, bg="white", borderwidth=3)
